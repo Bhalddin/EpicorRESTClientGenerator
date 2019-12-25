@@ -11,10 +11,12 @@ namespace EpicorSwaggerRESTGenerator.Models
         public string Namespace { get; set; }
         public bool useBaseClass { get; set; }
         public bool useNamespace { get; set; }
+        public bool generateXAF { get; set; }
         public string BaseClass { get; set; }
         public string APIURL { get; set; }
         public string Project { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        
     }
 }

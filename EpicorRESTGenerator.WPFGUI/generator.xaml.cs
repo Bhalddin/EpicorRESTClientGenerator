@@ -228,6 +228,7 @@ namespace EpicorSwaggerRESTGenerator.WPFGUI
             details.Namespace = NamespaceTextBox.Text;
             details.useNamespace = (bool)UseNamespaceCheckBox.IsChecked;
             details.useBaseClass = (bool)UseBaseClassCheckBox.IsChecked;
+            details.generateXAF = (bool)GenerateXAFCheckBox.IsChecked;
             details.Username = usernameTextBox.Text;
             details.Password = passwordTextBox.Password;
 

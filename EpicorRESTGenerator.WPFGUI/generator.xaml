@@ -42,90 +42,98 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".6*" />
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="99*" />
+            <ColumnDefinition Width="201*"/>
+            <ColumnDefinition Width="148*"/>
+            <ColumnDefinition Width="145*"/>
         </Grid.ColumnDefinitions>
 
         <Label Content="Epicor URL:"
-               HorizontalAlignment="Right"/>
+               HorizontalAlignment="Right" Height="19" Margin="0,3" Width="79"/>
 
         <TextBox x:Name="serviceURLTextBox"
                  Text="{Binding Source={StaticResource Settings}, Path=Default.EpicorUrl}"
                  Grid.Column="1"
-                 Grid.ColumnSpan="2"/>
+                 Grid.ColumnSpan="3" Margin="2"/>
 
         <Label Content="Namespace:"
                HorizontalAlignment="Right"
-               Grid.Row="1"/>
+               Grid.Row="1" Height="19" Margin="0,3" Width="85"/>
 
         <TextBox x:Name="NamespaceTextBox"
                  TextWrapping="NoWrap" 
                  Text="{Binding Source={StaticResource Settings}, Path=Default.Namespace}" 
                  Grid.Row="1"
-                 Grid.Column="1" />
+                 Grid.Column="1" Margin="2" />
         <CheckBox x:Name="UseNamespaceCheckBox" 
                   Content="Use FQN Namespace"  
                   VerticalAlignment="Center" 
                   Grid.Row="1" 
                   Grid.Column="2"
-                  IsChecked="True" />
+                  IsChecked="True" Height="15" Margin="22,5,10,5" />
+        <CheckBox x:Name="GenerateXAFCheckBox" 
+                  Content="Genrate XAF Code"  
+                  VerticalAlignment="Center" 
+                  Grid.Row="1" 
+                  Grid.Column="3"
+                  IsChecked="False" Height="15" Margin="22,5,10,5" />
+
         <Label Content="Base Class:" 
                HorizontalAlignment="Right" 
-               Grid.Row="2" />
+               Grid.Row="2" Height="19" Margin="0,3" Width="77" />
 
         <TextBox x:Name="BaseClassTextBox"
                  TextWrapping="NoWrap" 
                  Text="{Binding Source={StaticResource Settings}, Path=Default.BaseClass}" 
                  Grid.Row="2"
-                 Grid.Column="1" />
+                 Grid.Column="1" Margin="2" />
 
         <CheckBox x:Name="UseBaseClassCheckBox" 
                   Content="Use Base Class"
                   VerticalAlignment="Center"
                   IsChecked="True" 
                   Grid.Row="2"
-                  Grid.Column="2"/>
+                  Grid.Column="2" Height="15" Margin="22,5,10,5"/>
 
         <Label Content="Username:" 
                HorizontalAlignment="Right" 
-               Grid.Row="3"/>
+               Grid.Row="3" Height="19" Margin="0,3" Width="75"/>
 
         <TextBox x:Name="usernameTextBox"
                  TextWrapping="NoWrap" 
                  Text="{Binding Source={StaticResource Settings}, Path=Default.Username}" 
                  IsEnabled="{Binding Source={StaticResource Settings}, Path=Default.UseCredentials}"
                  Grid.Row="3"
-                 Grid.Column="1"/>
+                 Grid.Column="1" Margin="2"/>
 
         <CheckBox x:Name="useCredentialsCheckBox" 
                   Content="Use Credentials"
                   VerticalAlignment="Center" 
                   IsChecked="{Binding Source={StaticResource Settings}, Path=Default.UseCredentials}"
                   Grid.Row="3"
-                  Grid.Column="2"/>
+                  Grid.Column="2" Height="15" Margin="22,5,-1,5" />
 
         <Label Content="Password:" 
                HorizontalAlignment="Right" 
-               Grid.Row="4"/>
+               Grid.Row="4" Height="19" Margin="0,3" Width="71"/>
 
         <PasswordBox x:Name="passwordTextBox"
                      IsEnabled="{Binding Source={StaticResource Settings}, Path=Default.UseCredentials}"
                      Grid.Row="4"
-                     Grid.Column="1" />
+                     Grid.Column="1" Margin="2" />
 
         <Button x:Name="CheckService" 
                 Content="1. Login"
                 IsEnabled="{Binding Source={StaticResource Settings}, Path=Default.UseCredentials}"
                 Click="CheckService_Click"
                 Grid.Row="4"
-                Grid.Column="2"/>
+                Grid.Column="2" Grid.ColumnSpan="2" Margin="2,0,1,0"/>
 
         <TabControl x:Name="tabControl"
                     Grid.Row="5"
-                    Grid.ColumnSpan="3"
+                    Grid.ColumnSpan="4"
                     IsEnabled="False" 
-                    SelectionChanged="OnTabItemChanged">
+                    SelectionChanged="OnTabItemChanged" Margin="0,0,-1,0.5">
 
             <TabItem Header="ERP">
                 <Grid Background="#FFE5E5E5">
