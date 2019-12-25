@@ -88,12 +88,18 @@ namespace EpicorSwaggerRESTGenerator.Models
 
                         string output = JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
 
-                        var document = await SwaggerDocument.FromJsonAsync(output);
-                        var settings = new SwaggerToCSharpClientGeneratorSettings() {
+                        var document = await OpenApiDocument.FromJsonAsync(output);
+                        var settings = new CSharpClientGeneratorSettings() {
                             ClassName = name,
-                            OperationNameGenerator = new SingleClientFromOperationIdOperationNameGenerator()
+                            OperationNameGenerator = new SingleClientFromOperationIdOperationNameGenerator(),
+                            UseHttpClientCreationMethod=true ,
+                            InjectHttpClient = false 
+                  
                         };
-                        var generator = new SwaggerToCSharpClientGenerator(document, settings);
+
+                       
+
+                        var generator = new CSharpClientGenerator(document, settings);
                         if (details.useBaseClass) generator.Settings.ClientBaseClass = details.BaseClass;
                         generator.Settings.CSharpGeneratorSettings.Namespace = (details.useNamespace)? "MyNamespace":details.Namespace ;
                         generator.Settings.UseHttpClientCreationMethod = true;
@@ -101,6 +107,7 @@ namespace EpicorSwaggerRESTGenerator.Models
                         generator.Settings.DisposeHttpClient = false;
 
                         var code = generator.GenerateFile();
+                      
                         code = code
                             //need to replace with my actual namespace
                             .Replace("MyNamespace", details.Namespace + "." + service.href.Replace("-", ""))
